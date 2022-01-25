@@ -1,0 +1,23 @@
+{
+    "name": "bnb.by",
+    "license": "MIT",
+    "type": "project",
+    "description": "Autoloading of classes",
+    "autoload": {
+        "psr-4": {
+            "App\\Controllers\\": "app/controllers",
+            "App\\Model\\": "app/models",
+            "App\\Controllers\\Request\\": "app/controllers/Request",
+            "App\\Controllers\\Validator\\": "app/controllers/Validator",
+            "Core\\": "core",
+            "Core\\DB\\": "core/db",
+            "Core\\router\\": "core/router",
+            "Core\\Exceptions\\": "core/exceptions",
+            "Core\\Template\\": "core/template"
+        }
+    },
+    "require": {
+        "twbs/bootstrap": "^4.1",
+        "twig/twig": "1.*"
+    }
+}

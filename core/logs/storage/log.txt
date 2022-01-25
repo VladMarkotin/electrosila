@@ -1,4 +1,0 @@
-
-25-01-22 13:01: User test1@test.com has knocked the door!
-25-01-22 13:01: Unexisted user has knocked! 
-25-01-22 13:01: Unexisted user has knocked! 

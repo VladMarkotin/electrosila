@@ -45,29 +45,30 @@ class addController extends Controller implements \SplSubject
         $email = $data->getElement('email');
         $phone = $data->getElement('phone');
         $pass  = sha1($data->getElement('pass'));
+        $repass  = sha1($data->getElement('repass'));
         //die(var_dump($pass));
         $validateArray = ["email" => $email, "phone" => $phone, "pass" =>$pass];
         $response = $validator->validate($validateArray);
         if($response === true) {
             $user = new UserModel();
             $existedUsers = $user->getData();
-            foreach ($existedUsers as $u) {
-                foreach ($u as $k => $v) {
-                    if (($k === 'email') && ($email === $v) && ($pass === $u["pass"])) {
-                        //Here I have to start logger
-                        $this->logMessage = "\n".date("d-m-y H:m") . ": User $v has knocked the door!";
-                        $this->attach($this->logeer);
-                        $this->notify();
-                        //end
-                        return;
+            if ($pass === $repass) { //Проверка на совпадение паролей
+                foreach ($existedUsers as $u) {
+                    foreach ($u as $k => $v) {
+                        if (($k === 'email') && ($email === $v)) {
+                            //Here I have to start logger
+                            $this->logMessage = "\n" . date("d-m-y H:m") . ": User $v has knocked the door!";
+                            $this->attach($this->logeer);
+                            $this->notify();
+                            //end
+                            return;
+                        }
                     }
                 }
+                $this->logMessage = "\n" . date("d-m-y H:m") . ": Unexisted user has knocked! ";
+                $this->attach($this->logeer);
+                $this->notify();
             }
-            $this->logMessage = "\n".date("d-m-y H:m") . ": Unexisted user has knocked! ";
-            $this->attach($this->logeer);
-            $this->notify();
-        }else{
-            echo json_encode($response);
         }
     }
 

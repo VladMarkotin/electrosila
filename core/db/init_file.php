@@ -15,19 +15,16 @@ class init_file
             "id"    => 1,
             "email" => "test1@test.com",
             "name"  => "test1",
-            "pass"  => "8cb2237d0679ca88db6464eac60da96345513964" //hash 12345
         ],
         2 => [
             "id"    => 2,
             "email" => "test2@test.com",
             "name"  => "test2",
-            "pass"  => "8cb2237d0679ca88db6464eac60da96345513964"
         ],
         3 => [
             "id"    => 3,
             "email" => "test3@test.com",
             "name"  => "test3",
-            "pass"  => "8cb2237d0679ca88db6464eac60da96345513964"
         ]
     ];
 
